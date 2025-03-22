@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE THING Website</title>
+    <style>
+        body {
+            background-color: yellow;
+            color: purple;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: red;
+            text-shadow: 3px 3px 5px blue;
+            font-size: 5em;
+        }
+        p {
+            font-size: 1.5em;
+        }
+        .warning {
+            color: green;
+            font-weight: bold;
+            font-size: 2em;
+            animation: blink 1s infinite alternate;
+        }
+        @keyframes blink {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        marquee {
+            color: orange;
+            font-size: 2em;
+            font-family: "Courier New", monospace;
+        }
+        .popup {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: red;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px black;
+            font-size: 2em;
+        }
+        .blinking-text {
+            animation: blink 0.5s step-end infinite;
+        }
+        .footer {
+            font-size: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .form-container {
+            margin-top: 30px;
+        }
+        input, textarea {
+            padding: 10px;
+            font-size: 1.2em;
+            width: 60%;
+            margin: 10px;
+            border: 2px solid purple;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <marquee>🚨 WARNING: ILLEGAL TRANSMISSION DETECTED ON 87.9 FM 🚨</marquee>
+
+    <h1>THE THING</h1>
+    <p>The Thing is a small FM broadcasting station on 87.9, broadcasting fake news just because.</p>
+    
+    <p>If you have actually been taking my news seriously, <strong>please stop!</strong></p>
+    
+    <p class="warning">This is an emergency broadcast. Please disregard everything you're reading.</p>
+    
+    <div class="form-container">
+        <h2>Submit a News Report</h2>
+        <form name="news-form" method="POST" netlify>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="news-report" placeholder="Enter your fake news report here..." rows="5" required></textarea>
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <p>Disclaimer: Not actual news lol. All stories are made up. We know your secrets.</p>
+    </footer>
+    
+    <script>
+        // Get the current timestamp
+        const currentTime = new Date().getTime();
+        const lastPopupTime = localStorage.getItem('lastPopupTime');
+        
+        // Show the popup if it hasn't been shown in the last 24 hours
+        if (!lastPopupTime || currentTime - lastPopupTime > 24 * 60 * 60 * 1000) {
+            alert("Emergency Broadcast! This message will self-destruct in 5 seconds.");
+            localStorage.setItem('lastPopupTime', currentTime);  // Store the current time when popup is shown
+        }
+    </script>
+</body>
+</html>
